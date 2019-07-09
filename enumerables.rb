@@ -32,7 +32,24 @@ module Enumerable
       result = false unless yield o
       break
     end
-    return result
+    result
+  end
+
+  def my_none?
+    result = false
+    self.my_each do |o|
+      result = true unless yield o
+      break
+    end
+    result
+  end
+
+  def my_count
+    result = true
+    self.my_each do |i|
+      result = false if !(yield i)
+    end
+    result
   end
 
 end
@@ -41,25 +58,37 @@ end
 
 arr = [9,20,4,5,8]
 
-# arr.my_each do |i|
-#   puts i
-# end
+arr.my_each do |i|
+  puts i
+end
 
-# puts "----"
+puts "----"
 
-# arr.my_each_with_index do |value, index|
-#   puts "Index: #{index} Value: #{value}"
-# end
+arr.my_each_with_index do |value, index|
+  puts "Index: #{index} Value: #{value}"
+end
 
-# puts "----"
+puts "----"
 
-# arr.my_select do |i|
-#   puts i < 9
-# end
+arr.my_select do |i|
+  puts i < 9
+end
 
-# puts "----"
+puts "----"
 
 arr.my_all? do |i|
   puts i > 20
+end
+
+puts "----"
+
+arr.my_none? do |i|
+  puts i != 20
+end
+
+puts "----"
+
+arr.my_count do |i|
+  puts i % 2 == 0
 end
 
