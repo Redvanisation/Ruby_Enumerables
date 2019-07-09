@@ -52,6 +52,18 @@ module Enumerable
     result
   end
 
+  def my_map
+    arr = []
+    self.my_each do |i|
+      if block_given? 
+        arr << i if yield(i)
+      else 
+        arr = self
+      end
+    end
+    arr
+  end
+
 end
 
 
@@ -90,5 +102,11 @@ puts "----"
 
 arr.my_count do |i|
   puts i % 2 == 0
+end
+
+puts "----"
+
+arr.my_map do |i|
+  puts i * 2
 end
 
