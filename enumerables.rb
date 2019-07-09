@@ -17,6 +17,15 @@ module Enumerable
       i += 1
     end
   end
+
+  def my_select
+    arr = []
+    self.my_each do |i|
+      arr << i if yield(i)
+    end
+    arr
+  end
+
 end
 
 
@@ -33,6 +42,9 @@ arr.my_each_with_index do |value, index|
   puts "Index: #{index} Value: #{value}"
 end
 
-# arr.each do |o|
-    
-# end
+puts "----"
+
+arr.my_select do |i|
+  puts i < 9
+end
+
