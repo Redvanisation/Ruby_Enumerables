@@ -64,6 +64,31 @@ module Enumerable
     arr
   end
 
+  def my_inject args = nil
+    if !block_given? 
+      return nil
+    end
+
+    unless !args.nil?
+      result = self[0]
+      o = 1
+    else
+      result = args
+      o = 0
+    end
+
+    self[o..-1].my_each do |i|
+      result = yield(result, i)
+    end
+    result
+  end
+
+end
+
+def multiply_els args
+  args.my_inject do |a, b|
+    a * b
+  end
 end
 
 
@@ -110,3 +135,6 @@ arr.my_map do |i|
   puts i * 2
 end
 
+puts "----"
+
+p multiply_els([2,4,5])
