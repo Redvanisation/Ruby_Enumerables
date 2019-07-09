@@ -26,25 +26,40 @@ module Enumerable
     arr
   end
 
+  def my_all?
+    result = true
+    self.my_each do |o|
+      result = false unless yield o
+      break
+    end
+    return result
+  end
+
 end
 
 
 
 arr = [9,20,4,5,8]
 
-arr.my_each do |i|
-  puts i
-end
+# arr.my_each do |i|
+#   puts i
+# end
 
-puts "----"
+# puts "----"
 
-arr.my_each_with_index do |value, index|
-  puts "Index: #{index} Value: #{value}"
-end
+# arr.my_each_with_index do |value, index|
+#   puts "Index: #{index} Value: #{value}"
+# end
 
-puts "----"
+# puts "----"
 
-arr.my_select do |i|
-  puts i < 9
+# arr.my_select do |i|
+#   puts i < 9
+# end
+
+# puts "----"
+
+arr.my_all? do |i|
+  puts i > 20
 end
 
