@@ -52,13 +52,15 @@ module Enumerable
     result
   end
 
-  def my_map
+  def my_map proc = nil
     arr = []
-    self.my_each do |i|
-      if block_given? 
-        arr << i if yield(i)
-      else 
-        arr = self
+    if proc
+      self.my_each do |i|
+        arr << proc.call(i)
+      end
+    else
+      self.my_each do |i|
+        arr << yield(i)
       end
     end
     arr
@@ -95,46 +97,48 @@ end
 
 arr = [9,20,4,5,8]
 
+puts "---- MY EACH -----"
+
 arr.my_each do |i|
   puts i
 end
 
-puts "----"
+puts "---- MY EACH WITH INDEX ----"
 
 arr.my_each_with_index do |value, index|
   puts "Index: #{index} Value: #{value}"
 end
 
-puts "----"
+puts "---- MY SELECT ----"
 
 arr.my_select do |i|
   puts i < 9
 end
 
-puts "----"
+puts "---- MY ALL ----"
 
 arr.my_all? do |i|
   puts i > 20
 end
 
-puts "----"
+puts "---- MY NONE ----"
 
 arr.my_none? do |i|
   puts i != 20
 end
 
-puts "----"
+puts "---- MY COUNT ----"
 
 arr.my_count do |i|
   puts i % 2 == 0
 end
 
-puts "----"
+puts "---- MY MAP ----"
 
 arr.my_map do |i|
   puts i * 2
 end
 
-puts "----"
+puts "---- MULTIPLY ELS TO TEST MY EJECT ----"
 
 p multiply_els([2,4,5])
