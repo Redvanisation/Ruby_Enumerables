@@ -41,4 +41,10 @@ RSpec.describe Enumerable do
         end 
     end
 
+    describe "#my_map" do
+        it "returns a new array based on the code given in the block" do
+            expect([0,11,15,100].my_map {|i| i + 2 }).to eql([2,13,17,102])
+        end 
+    end
+
 end

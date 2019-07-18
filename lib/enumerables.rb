@@ -104,7 +104,7 @@ end
 
 
 
-arr = [9,20,4,5,8]
+# arr = [9,20,4,5,8]
 
 # puts "---- MY EACH -----"
 
@@ -137,13 +137,13 @@ arr = [9,20,4,5,8]
 #   puts i != 20
 # end
 
-puts "---- MY COUNT ----"
+# puts "---- MY COUNT ----"
 
 # arr.my_count do |i|
 #   puts i > 5
 # end
 
-[3,11,9,8].my_count {|i| i > 3}
+# [3,11,9,8].my_count {|i| i > 3}
 
 # puts "---- MY MAP ----"
 
