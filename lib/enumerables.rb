@@ -11,12 +11,16 @@ module Enumerable
 
   def my_each_with_index
     i = 0
+    arr = []
 
     while i < self.size
-      yield(self[i], i)
+      arr << yield(self[i], i)
       i += 1
+      break if i > self.length-1
     end
+    arr
   end
+
 
   def my_select
     arr = []
@@ -95,50 +99,51 @@ end
 
 
 
-arr = [9,20,4,5,8]
+# arr = [9,20,4,5,8]
 
-puts "---- MY EACH -----"
+# puts "---- MY EACH -----"
 
-arr.my_each do |i|
-  puts i
-end
+# arr.my_each do |i|
+#   puts i
+# end
 
-puts "---- MY EACH WITH INDEX ----"
+# puts "---- MY EACH WITH INDEX ----"
 
-arr.my_each_with_index do |value, index|
-  puts "Index: #{index} Value: #{value}"
-end
+# arr.my_each_with_index do |value, index|
+#   puts "Index: #{index} Value: #{value}"
+#   index
+# end
 
-puts "---- MY SELECT ----"
+# puts "---- MY SELECT ----"
 
-arr.my_select do |i|
-  puts i < 9
-end
+# arr.my_select do |i|
+#   puts i < 9
+# end
 
-puts "---- MY ALL ----"
+# puts "---- MY ALL ----"
 
-arr.my_all? do |i|
-  puts i > 20
-end
+# arr.my_all? do |i|
+#   puts i > 20
+# end
 
-puts "---- MY NONE ----"
+# puts "---- MY NONE ----"
 
-arr.my_none? do |i|
-  puts i != 20
-end
+# arr.my_none? do |i|
+#   puts i != 20
+# end
 
-puts "---- MY COUNT ----"
+# puts "---- MY COUNT ----"
 
-arr.my_count do |i|
-  puts i % 2 == 0
-end
+# arr.my_count do |i|
+#   puts i % 2 == 0
+# end
 
-puts "---- MY MAP ----"
+# puts "---- MY MAP ----"
 
-arr.my_map do |i|
-  puts i * 2
-end
+# arr.my_map do |i|
+#   puts i * 2
+# end
 
-puts "---- MULTIPLY ELS TO TEST MY EJECT ----"
+# puts "---- MULTIPLY ELS TO TEST MY EJECT ----"
 
-p multiply_els([2,4,5])
+# p multiply_els([2,4,5])
