@@ -19,4 +19,10 @@ RSpec.describe Enumerable do
         end 
     end
 
+    describe "#my_all?" do
+        it "returns true is all the elements in the block pass a condition" do
+            expect([2,10,6].my_all? {|i| i % 2 == 0}).to eql(true)
+        end 
+    end
+
 end
