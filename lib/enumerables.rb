@@ -49,11 +49,16 @@ module Enumerable
   end
 
   def my_count
-    result = true
+    return self.length if !block_given?
+    result = false
+    res = []
     self.my_each do |i|
-      result = false if !(yield i)
+      if (yield i)
+        result = true
+      end
+      res << result if result == true
     end
-    result
+    res.length
   end
 
   def my_map proc = nil
@@ -99,7 +104,7 @@ end
 
 
 
-# arr = [9,20,4,5,8]
+arr = [9,20,4,5,8]
 
 # puts "---- MY EACH -----"
 
@@ -132,11 +137,13 @@ end
 #   puts i != 20
 # end
 
-# puts "---- MY COUNT ----"
+puts "---- MY COUNT ----"
 
 # arr.my_count do |i|
-#   puts i % 2 == 0
+#   puts i > 5
 # end
+
+[3,11,9,8].my_count {|i| i > 3}
 
 # puts "---- MY MAP ----"
 

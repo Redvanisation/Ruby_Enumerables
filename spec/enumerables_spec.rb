@@ -20,14 +20,24 @@ RSpec.describe Enumerable do
     end
 
     describe "#my_all?" do
-        it "returns true is all the elements in the block passes a condition" do
+        it "returns true if all the elements in the block passes a condition" do
             expect([2,10,6].my_all? {|i| i % 2 == 0}).to eql(true)
         end 
     end
 
     describe "#my_none?" do
-        it "returns true is none of the elements in the block passes a condition" do
+        it "returns true if none of the elements in the block passes a condition" do
             expect([3,11,9].my_none? {|i| i % 2 == 0}).to eql(true)
+        end 
+    end
+
+    describe "#my_count" do
+        it "returns the number of elements that passes a condition in an a block" do
+            expect([3,11,9,8].my_count {|i| i > 3}).to eql(3)
+        end 
+ 
+        it "returns the length of the array if no condition is given" do
+            expect([3,11,9,8].my_count).to eql(4)
         end 
     end
 
