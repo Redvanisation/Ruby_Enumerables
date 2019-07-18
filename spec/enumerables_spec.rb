@@ -47,4 +47,10 @@ RSpec.describe Enumerable do
         end 
     end
 
+    describe "#my_inject" do
+        it "returns a single element reduced based on the condition given in the block" do
+            expect([0,1,2,3,10].my_inject {|i,o| i + o }).to eql(16)
+        end 
+    end
+
 end
