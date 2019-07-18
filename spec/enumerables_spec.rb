@@ -13,4 +13,10 @@ RSpec.describe Enumerable do
         end 
     end
 
+    describe "#my_select" do
+        it "returns a new array with elements that pass a condition given in the block" do
+            expect([9,2,1,10,6].my_select {|i| i % 2 == 0}).to eql([2,10,6])
+        end 
+    end
+
 end
